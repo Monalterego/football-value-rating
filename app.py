@@ -420,7 +420,7 @@ with tabs[3]:
                 fig = px.bar(
                     imp_df, x="Importance", y="Feature", orientation="h",
                     color="Importance",
-                    color_continuous_scale=[[0, color + "44"], [1, color]],,
+                    color_continuous_scale=[[0, color + "44"], [1, color]],
                 )
                 fig.update_layout(
                     template="plotly_dark",
