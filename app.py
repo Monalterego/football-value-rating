@@ -418,9 +418,10 @@ with tabs[3]:
                 imp_df = imp.head(8).reset_index()
                 imp_df.columns = ["Feature", "Importance"]
                 fig = px.bar(
-                    imp_df, x="Importance", y="Feature", orientation="h",
-                    color="Importance",
-                    color_continuous_scale=[[0, color + "44"], [1, color]],
+                        imp_df, x="Importance", y="Feature", orientation="h",
+                        color="Importance",
+                        color_continuous_scale="blues",
+                    )
                 )
                 fig.update_layout(
                     template="plotly_dark",
