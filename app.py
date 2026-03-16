@@ -352,7 +352,7 @@ with tabs[0]:
     u = filtered[filtered["rating"] == "Underrated"].sort_values("diff_pct", ascending=False)
     show = u[display_cols].copy()
     show["rating"] = show["rating"].map(RATING_DISPLAY)
-    st.dataframe(show, column_config=col_config, hide_index=True, use_container_width=True)
+    st.dataframe(show, column_config=col_config, hide_index=True, width="stretch")
 
 # ── Tab: Overrated ───────────────────────────────────────
 with tabs[1]:
@@ -361,14 +361,14 @@ with tabs[1]:
     o = filtered[filtered["rating"] == "Overrated"].sort_values("diff_pct")
     show = o[display_cols].copy()
     show["rating"] = show["rating"].map(RATING_DISPLAY)
-    st.dataframe(show, column_config=col_config, hide_index=True, use_container_width=True)
+    st.dataframe(show, column_config=col_config, hide_index=True, width="stretch")
 
 # ── Tab: All ─────────────────────────────────────────────
 with tabs[2]:
     st.markdown(f"### {t('tab_all', lang)}")
     show = filtered.sort_values("diff_pct", ascending=False)[display_cols].copy()
     show["rating"] = show["rating"].map(RATING_DISPLAY)
-    st.dataframe(show, column_config=col_config, hide_index=True, use_container_width=True)
+    st.dataframe(show, column_config=col_config, hide_index=True, width="stretch")
 
 # ── Tab: By Position ─────────────────────────────────────
 with tabs[3]:
@@ -399,7 +399,7 @@ with tabs[3]:
             st.markdown(f"**{t('tab_underrated', lang)}**")
             top_u = pos_data[pos_data["rating"] == "Underrated"].sort_values("diff_pct", ascending=False).head(10)
             if len(top_u) > 0:
-                st.dataframe(top_u[mini], column_config=col_config, hide_index=True, use_container_width=True)
+                st.dataframe(top_u[mini], column_config=col_config, hide_index=True, use_container_width="stretch")
             else:
                 st.caption("—")
 
