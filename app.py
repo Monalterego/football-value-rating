@@ -420,7 +420,7 @@ with tabs[3]:
                 fig = px.bar(
                     imp_df, x="Importance", y="Feature", orientation="h",
                     color="Importance",
-                    color_continuous_scale=[color + "44", color],
+                    color_continuous_scale=[[0, color + "44"], [1, color]],,
                 )
                 fig.update_layout(
                     template="plotly_dark",
@@ -430,7 +430,7 @@ with tabs[3]:
                     showlegend=False, height=250,
                     margin=dict(l=0, r=0, t=10, b=0),
                 )
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width="stretch")
         st.markdown("")
 
 # ── Tab: Charts ──────────────────────────────────────────
