@@ -407,7 +407,7 @@ with tabs[3]:
             st.markdown(f"**{t('tab_overrated', lang)}**")
             top_o = pos_data[pos_data["rating"] == "Overrated"].sort_values("diff_pct").head(10)
             if len(top_o) > 0:
-                st.dataframe(top_o[mini], column_config=col_config, hide_index=True, use_container_width=True)
+                st.dataframe(top_o[mini], column_config=col_config, hide_index=True, use_container_width="stretch")
             else:
                 st.caption("—")
 
@@ -458,7 +458,7 @@ with tabs[4]:
                    line=dict(color="white", width=1, dash="dash"))
     fig1.update_layout(template="plotly_dark", plot_bgcolor="rgba(0,0,0,0)",
                        paper_bgcolor="rgba(0,0,0,0)", height=500)
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, use_container_width="stretch")
 
     col_a, col_b = st.columns(2)
 
@@ -474,7 +474,7 @@ with tabs[4]:
         )
         fig2.update_layout(template="plotly_dark", plot_bgcolor="rgba(0,0,0,0)",
                            paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, use_container_width="stretch")
 
     with col_b:
         pos_stats = filtered.groupby(["pos_group", "rating"]).size().reset_index(name="count")
@@ -488,7 +488,7 @@ with tabs[4]:
         )
         fig3.update_layout(template="plotly_dark", plot_bgcolor="rgba(0,0,0,0)",
                            paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, use_container_width="stretch")
 
     # Age vs diff
     fig4 = px.scatter(
@@ -504,11 +504,15 @@ with tabs[4]:
     fig4.add_hline(y=0, line_dash="solid", line_color="white", opacity=0.2)
     fig4.update_layout(template="plotly_dark", plot_bgcolor="rgba(0,0,0,0)",
                        paper_bgcolor="rgba(0,0,0,0)", height=400)
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, use_container_width="stretch")
 
 # ── Tab: Search ──────────────────────────────────────────
 with tabs[5]:
-    search = st.text_input("", placeholder=t("search_placeholder", lang))
+    search = st.text_input(
+    label="Search Player", 
+    placeholder=t("search_placeholder", lang), 
+    label_visibility="collapsed"
+)
 
     if search:
         sn = normalize_name(search)
