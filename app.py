@@ -422,7 +422,7 @@ with tabs[3]:
                         color="Importance",
                         color_continuous_scale="blues",
                     )
-                )
+                
                 fig.update_layout(
                     template="plotly_dark",
                     plot_bgcolor="rgba(0,0,0,0)",
