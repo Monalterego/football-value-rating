@@ -399,7 +399,7 @@ with tabs[3]:
             st.markdown(f"**{t('tab_underrated', lang)}**")
             top_u = pos_data[pos_data["rating"] == "Underrated"].sort_values("diff_pct", ascending=False).head(10)
             if len(top_u) > 0:
-                st.dataframe(top_u[mini], column_config=col_config, hide_index=True, use_container_width="stretch")
+                st.dataframe(top_u[mini], column_config=col_config, hide_index=True, width="stretch")
             else:
                 st.caption("—")
 
